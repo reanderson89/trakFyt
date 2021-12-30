@@ -8,6 +8,7 @@ public class FytApiApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(FytApiApplication.class, args);
+		System.out.println("Hello Rob");
 	}
 
 }
