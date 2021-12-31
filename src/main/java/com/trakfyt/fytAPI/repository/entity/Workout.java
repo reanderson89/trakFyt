@@ -1,5 +1,7 @@
 package com.trakfyt.fytAPI.repository.entity;
 
+import com.trakfyt.fytAPI.controller.dto.WorkoutDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -23,5 +25,71 @@ public class Workout {
     @JoinColumn(name = "Athlete_id")
     private Athlete athlete;
 
+    public Workout() {
+    }
 
+    public Workout(WorkoutDTO workoutDTO) {
+        this.type = type;
+        this.distance = distance;
+        this.duration = duration;
+        this.location = location;
+        this.comments = comments;
+        this.athlete = athlete;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public Double getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
+    }
+
+    public Double getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Double duration) {
+        this.duration = duration;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public Athlete getAthlete() {
+        return athlete;
+    }
+
+    public void setAthlete(Athlete athlete) {
+        this.athlete = athlete;
+    }
 }

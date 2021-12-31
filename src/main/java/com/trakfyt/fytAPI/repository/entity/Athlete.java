@@ -1,7 +1,7 @@
 package com.trakfyt.fytAPI.repository.entity;
 
 import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
-import com.trakfyt.fytAPI.service.AthleteService;
+
 
 import javax.persistence.*;
 import java.util.Set;
