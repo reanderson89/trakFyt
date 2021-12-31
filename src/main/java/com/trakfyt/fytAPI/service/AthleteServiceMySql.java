@@ -40,10 +40,16 @@ public class AthleteServiceMySql implements AthleteService {
     }
 
     @Override
-    public Optional<Athlete> findById(int athleteId )
+    public Athlete findById(int athleteId )
     {
-        //TODO implement this method
-        return athleteRepository.findById(athleteId);
+        Optional<Athlete> optional = athleteRepository.findById(athleteId);
+        Athlete athlete = null;
+        if(optional.isPresent()){
+            athlete = optional.get();
+        }else{
+            throw new RuntimeException("Employee not for id ::" + athleteId);
+        }
+        return athlete ;
     }
 
 }

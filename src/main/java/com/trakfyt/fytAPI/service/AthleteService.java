@@ -12,5 +12,5 @@ public interface AthleteService {
 
     List<Athlete> all();
 
-    Optional<Athlete> findById(int athleteId );
+    Athlete findById(int athleteId );
 }
