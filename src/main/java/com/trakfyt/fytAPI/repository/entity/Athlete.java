@@ -22,11 +22,10 @@ public class Athlete {
     private Integer age;
 
 
-    @OneToMany(mappedBy = "Athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Workout> workouts;
+    @OneToMany(mappedBy = "athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Workout> workout;
 
     public Athlete(){
-
     }
 
     public Athlete(AthleteDTO athleteDTO) {

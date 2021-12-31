@@ -19,7 +19,7 @@ public class Workout {
 
     private String comments;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "Athlete_id")
     private Athlete athlete;
 
