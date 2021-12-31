@@ -47,4 +47,14 @@ public class AthleteDTO {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+    @Override
+    public String toString() {
+        return "AthleteDTO{" +
+                "name='" + name + '\'' +
+                ", weight=" + weight +
+                ", height=" + height +
+                ", age=" + age +
+                '}';
+    }
 }

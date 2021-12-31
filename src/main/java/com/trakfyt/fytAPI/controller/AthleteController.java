@@ -6,6 +6,8 @@ import com.trakfyt.fytAPI.service.AthleteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/athlete")
 public class AthleteController {
@@ -20,7 +22,6 @@ public class AthleteController {
     @GetMapping( "/all" )
     public Iterable<Athlete> all()
     {
-        System.out.println("I WAS HITTTTTT!!!!!");
         return athleteService.all();
     }
 
@@ -31,7 +32,7 @@ public class AthleteController {
     }
 
     @GetMapping( "/{id}" )
-    public Athlete findById( @PathVariable Integer id )
+    public Athlete findById(@PathVariable Integer id )
     {
         return athleteService.findById( id );
     }
@@ -40,10 +41,10 @@ public class AthleteController {
     public Athlete update( @RequestBody AthleteDTO athleteDTO, @PathVariable Integer id )
     {
         Athlete athlete = athleteService.findById( id );
-        athlete.setName( athlete.getName() );
-        athlete.setAge( athlete.getAge() );
-        athlete.setHeight( athlete.getHeight() );
-        athlete.setWeight( athlete.getWeight() );
+        athlete.setName( athleteDTO.getName() );
+        athlete.setAge( athleteDTO.getAge() );
+        athlete.setHeight( athleteDTO.getHeight() );
+        athlete.setWeight( athleteDTO.getWeight() );
         return athleteService.save( athlete );
     }
 
