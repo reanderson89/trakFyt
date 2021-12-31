@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AthleteServiceMySql implements AthleteService {
@@ -39,10 +40,10 @@ public class AthleteServiceMySql implements AthleteService {
     }
 
     @Override
-    public Athlete findById( int athleteId )
+    public Optional<Athlete> findById(int athleteId )
     {
         //TODO implement this method
-        return null;
+        return athleteRepository.findById(athleteId);
     }
 
 }
