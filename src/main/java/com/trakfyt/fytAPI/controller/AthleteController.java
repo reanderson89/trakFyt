@@ -1,26 +1,57 @@
 package com.trakfyt.fytAPI.controller;
 
-import com.trakfyt.fytAPI.repository.AthleteRepository;
+import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
 import com.trakfyt.fytAPI.repository.entity.Athlete;
+import com.trakfyt.fytAPI.service.AthleteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/athlete")
 public class AthleteController {
-    final AthleteRepository athleteRepository;
+    final AthleteService athleteService;
 
 
-    public AthleteController(@Autowired AthleteRepository athleteRepository )
+    public AthleteController(@Autowired AthleteService athleteService )
     {
-        this.athleteRepository = athleteRepository;
+        this.athleteService = athleteService;
     }
 
-    @GetMapping
-    public Iterable<Athlete> getItems(){
-        return athleteRepository.findAll();
+    @GetMapping( "/all" )
+    public Iterable<Athlete> all()
+    {
+        System.out.println("I WAS HITTTTTT!!!!!");
+        return athleteService.all();
     }
+
+    @PostMapping
+    public Athlete save( @RequestBody AthleteDTO athleteDTO )
+    {
+        return athleteService.save( new Athlete( athleteDTO ) );
+    }
+
+    @GetMapping( "/{id}" )
+    public Athlete findById( @PathVariable Integer id )
+    {
+        return athleteService.findById( id );
+    }
+
+    @PutMapping( "/{id}" )
+    public Athlete update( @RequestBody AthleteDTO athleteDTO, @PathVariable Integer id )
+    {
+        Athlete athlete = athleteService.findById( id );
+        athlete.setName( athlete.getName() );
+        athlete.setAge( athlete.getAge() );
+        athlete.setHeight( athlete.getHeight() );
+        athlete.setWeight( athlete.getWeight() );
+        return athleteService.save( athlete );
+    }
+
+    @DeleteMapping( "/{id}" )
+    public void delete( @PathVariable Integer id )
+    {
+        athleteService.delete( id );
+    }
+
 }
 

@@ -1,5 +1,8 @@
 package com.trakfyt.fytAPI.repository.entity;
 
+import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
+import com.trakfyt.fytAPI.service.AthleteService;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +22,16 @@ public class Athlete {
     private Integer height;
 
     private Integer age;
+
+    public Athlete(){
+    }
+
+    public Athlete(AthleteDTO athleteDTO) {
+        this.name = athleteDTO.getName();
+        this.weight = athleteDTO.getWeight();
+        this.height = athleteDTO.getHeight();
+        this.age = athleteDTO.getAge();
+    }
 
     public Integer getId() {
         return id;
