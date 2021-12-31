@@ -24,6 +24,7 @@ public class Athlete {
     private Integer age;
 
     public Athlete(){
+
     }
 
     public Athlete(AthleteDTO athleteDTO) {
