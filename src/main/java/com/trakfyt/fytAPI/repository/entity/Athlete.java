@@ -3,10 +3,8 @@ package com.trakfyt.fytAPI.repository.entity;
 import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
 import com.trakfyt.fytAPI.service.AthleteService;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Athlete {
@@ -22,6 +20,10 @@ public class Athlete {
     private Integer height;
 
     private Integer age;
+
+
+    @OneToMany(mappedBy = "Athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Workout> workouts;
 
     public Athlete(){
 
