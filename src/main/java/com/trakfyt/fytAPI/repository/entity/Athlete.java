@@ -1,7 +1,7 @@
 package com.trakfyt.fytAPI.repository.entity;
 
 import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
-import com.trakfyt.fytAPI.service.AthleteService;
+
 
 import javax.persistence.*;
 import java.util.Set;
@@ -22,8 +22,8 @@ public class Athlete {
     private Integer age;
 
 
-    @OneToMany(mappedBy = "Athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Workout> workouts;
+    @OneToMany(mappedBy = "athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<Workout> workout;
 
     public Athlete(){
     }
