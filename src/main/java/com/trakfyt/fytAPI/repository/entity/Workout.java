@@ -22,19 +22,18 @@ public class Workout {
     private String comments;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "Athlete_id")
+    @JoinColumn(name = "athlete_id")
     private Athlete athlete;
 
     public Workout() {
     }
 
     public Workout(WorkoutDTO workoutDTO) {
-        this.type = type;
-        this.distance = distance;
-        this.duration = duration;
-        this.location = location;
-        this.comments = comments;
-        this.athlete = athlete;
+        this.type = workoutDTO.getType();
+        this.distance = workoutDTO.getDistance();
+        this.duration = workoutDTO.getDuration();
+        this.location = workoutDTO.getLocation();
+        this.comments = workoutDTO.getComments();
     }
 
     public Integer getId() {
