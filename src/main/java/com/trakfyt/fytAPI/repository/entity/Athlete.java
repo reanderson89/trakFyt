@@ -5,6 +5,7 @@ import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
 
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,9 +25,9 @@ public class Athlete {
     private Integer age;
 
 
-    @OneToMany(mappedBy = "athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Workout> workout;
+//    @OneToMany(mappedBy = "athlete", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private List<Workout> workouts;
 
     public Athlete(){
     }
@@ -77,6 +78,14 @@ public class Athlete {
     public void setAge(Integer age) {
         this.age = age;
     }
+
+//    public List<Workout> getWorkouts() {
+//        return workouts;
+//    }
+//
+//    public void setWorkouts(List<Workout> workouts) {
+//        this.workouts = workouts;
+//    }
 
     @Override
     public String toString() {

@@ -23,9 +23,9 @@ public class Workout {
 
     private String comments;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "athlete_id", unique = true)
-    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "athlete_id", referencedColumnName = "id")
+//    @JsonManagedReference
     private Athlete athlete;
 
     public Workout() {
@@ -87,11 +87,4 @@ public class Workout {
         this.comments = comments;
     }
 
-    public Athlete getAthlete() {
-        return athlete;
-    }
-
-    public void setAthlete(Athlete athlete) {
-        this.athlete = athlete;
-    }
 }
