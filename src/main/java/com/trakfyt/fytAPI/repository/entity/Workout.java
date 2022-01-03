@@ -1,10 +1,12 @@
 package com.trakfyt.fytAPI.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.trakfyt.fytAPI.controller.dto.WorkoutDTO;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "workout")
 public class Workout {
 
     @Id
@@ -21,8 +23,9 @@ public class Workout {
 
     private String comments;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "athlete_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "athlete_id", unique = true)
+    @JsonManagedReference
     private Athlete athlete;
 
     public Workout() {

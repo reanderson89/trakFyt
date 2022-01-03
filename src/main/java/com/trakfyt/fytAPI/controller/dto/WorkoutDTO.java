@@ -1,7 +1,6 @@
 package com.trakfyt.fytAPI.controller.dto;
 
 public class WorkoutDTO {
-
     private String type;
 
     private Double distance;
@@ -24,20 +23,40 @@ public class WorkoutDTO {
         return type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public Double getDistance() {
         return distance;
+    }
+
+    public void setDistance(Double distance) {
+        this.distance = distance;
     }
 
     public Double getDuration() {
         return duration;
     }
 
+    public void setDuration(Double duration) {
+        this.duration = duration;
+    }
+
     public String getLocation() {
         return location;
     }
 
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
     public String getComments() {
         return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
     }
 
     @Override

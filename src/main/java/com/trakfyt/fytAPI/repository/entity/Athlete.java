@@ -1,5 +1,6 @@
 package com.trakfyt.fytAPI.repository.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
 
 
@@ -7,6 +8,7 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "athlete")
 public class Athlete {
 
     @Id
@@ -23,6 +25,7 @@ public class Athlete {
 
 
     @OneToMany(mappedBy = "athlete", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Workout> workout;
 
     public Athlete(){
