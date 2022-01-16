@@ -2,6 +2,7 @@ package com.trakfyt.fytAPI.service;
 
 import com.trakfyt.fytAPI.repository.AthleteRepository;
 import com.trakfyt.fytAPI.repository.CompletedWorkoutsRepository;
+import com.trakfyt.fytAPI.repository.WorkoutRepository;
 import com.trakfyt.fytAPI.repository.entities.Athlete;
 import com.trakfyt.fytAPI.repository.entities.CompletedWorkouts;
 import com.trakfyt.fytAPI.repository.entities.Workout;
@@ -15,10 +16,12 @@ import java.util.Optional;
 @Service
 public class CompletedWorkoutsServiceMySql implements CompletedWorkoutsService {
     private final CompletedWorkoutsRepository completedWorkoutsRepository;
+    private final WorkoutRepository workoutRepository;
 
-    public CompletedWorkoutsServiceMySql(@Autowired CompletedWorkoutsRepository completedWorkoutsRepository )
+    public CompletedWorkoutsServiceMySql(@Autowired CompletedWorkoutsRepository completedWorkoutsRepository, @Autowired WorkoutRepository workoutRepository )
     {
         this.completedWorkoutsRepository = completedWorkoutsRepository;
+        this.workoutRepository = workoutRepository;
     }
 
     @Override
@@ -55,9 +58,19 @@ public class CompletedWorkoutsServiceMySql implements CompletedWorkoutsService {
     }
 
     @Override
-    public void findByAthleteId(int athleteId){
+    public List<Workout> findByAthleteId(int athleteId){
         Iterable<CompletedWorkouts> listOfCompletedWorkouts = completedWorkoutsRepository.findByAthleteId(athleteId);
-        listOfCompletedWorkouts.forEach(System.out::println);
+        List<Workout> listOfWorkouts = new ArrayList<>();
+        listOfCompletedWorkouts.forEach(cw -> {
+            Optional<Workout> optionalWorkout = workoutRepository.findById(cw.getId());
+            Workout workout = null;
+            if(optionalWorkout.isPresent()){
+                workout = optionalWorkout.get();
+                listOfWorkouts.add(workout);
+            }
+
+        });
+        return listOfWorkouts;
 
     }
 }

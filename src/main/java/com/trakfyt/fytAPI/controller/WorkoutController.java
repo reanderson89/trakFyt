@@ -8,6 +8,8 @@ import com.trakfyt.fytAPI.service.WorkoutService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/athlete")
 public class WorkoutController {
@@ -30,8 +32,8 @@ public class WorkoutController {
 
 //    create a method to get all workouts by athlete id
     @GetMapping("/{athleteId}/workouts")
-    public void findAllWorkoutsForAnAthlete(@PathVariable Integer athleteId){
-        completedWorkoutsService.findByAthleteId(athleteId);
+    public List<Workout> findAllWorkoutsForAnAthlete(@PathVariable Integer athleteId){
+        return completedWorkoutsService.findByAthleteId(athleteId);
     }
 
     @PostMapping("/{athleteId}/workouts")

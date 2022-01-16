@@ -5,5 +5,5 @@ import com.trakfyt.fytAPI.repository.entities.Workout;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CompletedWorkoutsRepository extends CrudRepository<CompletedWorkouts, Integer> {
-public Iterable<CompletedWorkouts> findByAthleteId(Integer athleteId );
+Iterable<CompletedWorkouts> findByAthleteId(Integer athleteId );
 }
