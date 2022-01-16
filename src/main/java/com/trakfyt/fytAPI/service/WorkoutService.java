@@ -1,6 +1,6 @@
 package com.trakfyt.fytAPI.service;
 
-import com.trakfyt.fytAPI.repository.entity.Workout;
+import com.trakfyt.fytAPI.repository.entities.Workout;
 
 import java.util.List;
 

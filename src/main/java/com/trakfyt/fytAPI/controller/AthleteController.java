@@ -1,12 +1,10 @@
 package com.trakfyt.fytAPI.controller;
 
 import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
-import com.trakfyt.fytAPI.repository.entity.Athlete;
+import com.trakfyt.fytAPI.repository.entities.Athlete;
 import com.trakfyt.fytAPI.service.AthleteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/athlete")
@@ -19,7 +17,7 @@ public class AthleteController {
         this.athleteService = athleteService;
     }
 
-    @GetMapping( "/all" )
+    @GetMapping
     public Iterable<Athlete> all()
     {
         return athleteService.all();
@@ -53,6 +51,7 @@ public class AthleteController {
     {
         athleteService.delete( id );
     }
+
 
 }
 

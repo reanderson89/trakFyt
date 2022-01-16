@@ -2,7 +2,7 @@ package com.trakfyt.fytAPI.service;
 
 import com.trakfyt.fytAPI.repository.AthleteRepository;
 
-import com.trakfyt.fytAPI.repository.entity.Athlete;
+import com.trakfyt.fytAPI.repository.entities.Athlete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
