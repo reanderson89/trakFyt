@@ -15,5 +15,5 @@ public interface CompletedWorkoutsService {
 
     CompletedWorkouts findById(int completedWorkoutId );
 
-    void findByAthleteId(int athleteId);
+    List<Workout> findByAthleteId(int athleteId);
 }
