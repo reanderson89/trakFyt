@@ -1,19 +1,19 @@
-package com.trakfyt.fytAPI.repository.entity;
+package com.trakfyt.fytAPI.repository.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "athlete")
 public class Athlete {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "athlete_seq")
     private Integer id;
 
     private String name;
@@ -24,15 +24,19 @@ public class Athlete {
 
     private Integer age;
 
+    @CreationTimestamp
+    private LocalDateTime createDateTime;
 
-//    @OneToMany(mappedBy = "athlete", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    @JsonManagedReference
-//    private List<Workout> workouts;
+    @UpdateTimestamp
+    private LocalDateTime updateDateTime;
+
 
     public Athlete(){
+
     }
 
     public Athlete(AthleteDTO athleteDTO) {
+        super();
         this.name = athleteDTO.getName();
         this.weight = athleteDTO.getWeight();
         this.height = athleteDTO.getHeight();
@@ -79,13 +83,21 @@ public class Athlete {
         this.age = age;
     }
 
-//    public List<Workout> getWorkouts() {
-//        return workouts;
-//    }
-//
-//    public void setWorkouts(List<Workout> workouts) {
-//        this.workouts = workouts;
-//    }
+    public LocalDateTime getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public void setCreateDateTime(LocalDateTime createDateTime) {
+        this.createDateTime = createDateTime;
+    }
+
+    public LocalDateTime getUpdateDateTime() {
+        return updateDateTime;
+    }
+
+    public void setUpdateDateTime(LocalDateTime updateDateTime) {
+        this.updateDateTime = updateDateTime;
+    }
 
     @Override
     public String toString() {

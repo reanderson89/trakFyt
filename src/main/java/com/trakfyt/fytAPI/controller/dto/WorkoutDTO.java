@@ -1,5 +1,7 @@
 package com.trakfyt.fytAPI.controller.dto;
 
+import com.trakfyt.fytAPI.repository.entities.Athlete;
+
 public class WorkoutDTO {
     private String type;
 
@@ -11,12 +13,15 @@ public class WorkoutDTO {
 
     private String comments;
 
-    public WorkoutDTO(String type, Double distance, Double duration, String location, String comments) {
+    private Integer athlete_id;
+
+    public WorkoutDTO(String type, Double distance, Double duration, String location, String comments, Integer athlete_id) {
         this.type = type;
         this.distance = distance;
         this.duration = duration;
         this.location = location;
         this.comments = comments;
+        this.athlete_id = athlete_id;
     }
 
     public String getType() {
@@ -57,6 +62,14 @@ public class WorkoutDTO {
 
     public void setComments(String comments) {
         this.comments = comments;
+    }
+
+    public Integer getAthlete_id() {
+        return athlete_id;
+    }
+
+    public void setAthlete_id(Integer athlete_id) {
+        this.athlete_id = athlete_id;
     }
 
     @Override

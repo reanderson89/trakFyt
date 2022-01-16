@@ -1,16 +1,18 @@
-package com.trakfyt.fytAPI.repository.entity;
+package com.trakfyt.fytAPI.repository.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.trakfyt.fytAPI.controller.dto.WorkoutDTO;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "workout")
 public class Workout {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "workout_seq")
     private Integer id;
 
     private String type;
@@ -23,10 +25,11 @@ public class Workout {
 
     private String comments;
 
-    @ManyToOne
-    @JoinColumn(name = "athlete_id", referencedColumnName = "id")
-//    @JsonManagedReference
-    private Athlete athlete;
+    @CreationTimestamp
+    private LocalDateTime createDateTime;
+
+    @UpdateTimestamp
+    private LocalDateTime updateDateTime;
 
     public Workout() {
     }
@@ -37,6 +40,7 @@ public class Workout {
         this.duration = workoutDTO.getDuration();
         this.location = workoutDTO.getLocation();
         this.comments = workoutDTO.getComments();
+
     }
 
     public Integer getId() {
@@ -87,4 +91,19 @@ public class Workout {
         this.comments = comments;
     }
 
+    public LocalDateTime getCreateDateTime() {
+        return createDateTime;
+    }
+
+    public void setCreateDateTime(LocalDateTime createDateTime) {
+        this.createDateTime = createDateTime;
+    }
+
+    public LocalDateTime getUpdateDateTime() {
+        return updateDateTime;
+    }
+
+    public void setUpdateDateTime(LocalDateTime updateDateTime) {
+        this.updateDateTime = updateDateTime;
+    }
 }

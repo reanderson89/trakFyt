@@ -1,7 +1,7 @@
 package com.trakfyt.fytAPI.service;
 
 import com.trakfyt.fytAPI.repository.WorkoutRepository;
-import com.trakfyt.fytAPI.repository.entity.Workout;
+import com.trakfyt.fytAPI.repository.entities.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
