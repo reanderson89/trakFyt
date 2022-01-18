@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/athlete")
 public class WorkoutController {
     final WorkoutService workoutService;
@@ -40,7 +41,6 @@ public class WorkoutController {
     public Workout save(@RequestBody WorkoutDTO workoutDTO, @PathVariable Integer athleteId )
     {
         Workout savedWorkout = workoutService.save( new Workout( workoutDTO ) );
-        System.out.println(savedWorkout.getId());
         CompletedWorkouts completedWorkouts = new CompletedWorkouts(athleteId, savedWorkout.getId());
         completedWorkoutsService.save(completedWorkouts);
         return savedWorkout;
@@ -55,13 +55,7 @@ public class WorkoutController {
     @PutMapping( "/workouts/{id}" )
     public Workout update( @RequestBody WorkoutDTO workoutDTO, @PathVariable Integer id )
     {
-        Workout workout = workoutService.findById( id );
-        workout.setType( workoutDTO.getType() );
-        workout.setDistance( workoutDTO.getDistance() );
-        workout.setDuration( workoutDTO.getDuration() );
-        workout.setLocation( workoutDTO.getLocation() );
-        workout.setComments( workoutDTO.getComments() );
-        return workoutService.save( workout );
+        return workoutService.update( workoutDTO, id );
     }
 
     @DeleteMapping( "/workouts/{id}" )

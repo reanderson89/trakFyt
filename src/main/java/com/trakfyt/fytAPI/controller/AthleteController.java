@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/athlete")
 public class AthleteController {
     final AthleteService athleteService;
@@ -38,12 +39,7 @@ public class AthleteController {
     @PutMapping( "/{id}" )
     public Athlete update( @RequestBody AthleteDTO athleteDTO, @PathVariable Integer id )
     {
-        Athlete athlete = athleteService.findById( id );
-        athlete.setName( athleteDTO.getName() );
-        athlete.setAge( athleteDTO.getAge() );
-        athlete.setHeight( athleteDTO.getHeight() );
-        athlete.setWeight( athleteDTO.getWeight() );
-        return athleteService.save( athlete );
+        return athleteService.update( athleteDTO, id );
     }
 
     @DeleteMapping( "/{id}" )
