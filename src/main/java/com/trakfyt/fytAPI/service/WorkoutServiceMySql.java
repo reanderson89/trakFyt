@@ -1,5 +1,6 @@
 package com.trakfyt.fytAPI.service;
 
+import com.trakfyt.fytAPI.controller.dto.WorkoutDTO;
 import com.trakfyt.fytAPI.repository.WorkoutRepository;
 import com.trakfyt.fytAPI.repository.entities.Workout;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +50,16 @@ public class WorkoutServiceMySql implements WorkoutService{
             throw new RuntimeException("Employee not for id ::" + workoutId);
         }
         return workout ;
+    }
+
+    @Override
+    public Workout update(WorkoutDTO workoutDTO, Integer id){
+        Workout workout = findById( id );
+        workout.setType( workoutDTO.getType() );
+        workout.setDistance( workoutDTO.getDistance() );
+        workout.setDuration( workoutDTO.getDuration() );
+        workout.setLocation( workoutDTO.getLocation() );
+        workout.setComments( workoutDTO.getComments() );
+        return workoutRepository.save(workout);
     }
 }

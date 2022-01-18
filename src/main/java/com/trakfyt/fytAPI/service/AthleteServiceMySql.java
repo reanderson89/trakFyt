@@ -1,5 +1,6 @@
 package com.trakfyt.fytAPI.service;
 
+import com.trakfyt.fytAPI.controller.dto.AthleteDTO;
 import com.trakfyt.fytAPI.repository.AthleteRepository;
 
 import com.trakfyt.fytAPI.repository.entities.Athlete;
@@ -50,6 +51,16 @@ public class AthleteServiceMySql implements AthleteService {
             throw new RuntimeException("Employee not for id ::" + athleteId);
         }
         return athlete ;
+    }
+
+    @Override
+    public Athlete update(AthleteDTO athleteDTO, Integer id){
+        Athlete athlete = findById( id );
+        athlete.setName( athleteDTO.getName() );
+        athlete.setAge( athleteDTO.getAge() );
+        athlete.setHeight( athleteDTO.getHeight() );
+        athlete.setWeight( athleteDTO.getWeight() );
+        return athleteRepository.save( athlete );
     }
 
 }

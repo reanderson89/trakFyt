@@ -24,6 +24,10 @@ public class Athlete {
 
     private Integer age;
 
+    private String email;
+
+    private String password;
+
     @CreationTimestamp
     private LocalDateTime createDateTime;
 
@@ -41,6 +45,8 @@ public class Athlete {
         this.weight = athleteDTO.getWeight();
         this.height = athleteDTO.getHeight();
         this.age = athleteDTO.getAge();
+        this.email = athleteDTO.getEmail();
+        this.password = athleteDTO.getPassword();
     }
 
     public Integer getId() {
@@ -97,6 +103,22 @@ public class Athlete {
 
     public void setUpdateDateTime(LocalDateTime updateDateTime) {
         this.updateDateTime = updateDateTime;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
