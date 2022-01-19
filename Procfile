@@ -1,0 +1,1 @@
+web: java -jar build/libs/fytAPI-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod
